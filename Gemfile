@@ -25,6 +25,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 # Use acts_as_votable to enable likes and following for our users.
 gem 'acts_as_votable'
 
+# Use font awesome rails to handle icon management.
+gem "font-awesome-rails"
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
