@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_tweet, only: [:show, :edit, :update, :destroy, :vote]
 
   # GET /tweets
   # GET /tweets.json
@@ -64,13 +64,19 @@ class TweetsController < ApplicationController
     end
   end
 
-  def upvote
-    @tweet.upvote_by current_user
-    redirect_to tweets_path
-  end
+  def vote
 
-  def downvote
-    @tweet.downvote_by current_user
+    case current_user.voted_as_when_voted_for(@tweet)
+      when nil
+        @tweet.upvote_by current_user
+      when true
+        @tweet.unvote_by current_user
+      when false
+        @tweet.upvote_by current_user
+      else
+
+    end
+
     redirect_to tweets_path
   end
 
