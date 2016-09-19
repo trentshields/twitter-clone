@@ -19,6 +19,10 @@ gem 'coffee-rails', '~> 4.2'
 # Use Devise as our User management gem
 gem 'devise'
 
+# Simple_hashtag is used to auto-generate hashtag linkages in our tweets.
+gem 'simple_hashtag'
+
+
 # Use Bootstrap-Sass as the CSS framework for the application.
 gem 'bootstrap-sass', '~> 3.3.6'
 

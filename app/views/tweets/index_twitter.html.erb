@@ -2,8 +2,6 @@
 
 <h1>Tweets</h1>
 
-<%= @hashtags.inspect %>
-
 <table class="table">
   <thead>
     <tr>
@@ -16,15 +14,14 @@
   <tbody>
     <% @tweets.each do |tweet| %>
       <tr>
-        <td>
-          <%= linkify_hashtags(tweet.message) %></td>
+        <td><%= tweet.message %></td>
         <td><%= tweet.user.email %></td>
         <td><%= link_to 'Show', tweet %></td>
         <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
         <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td>
           <% if current_user %>
-          <%= link_to like_tweet_path(tweet), method: :put do %>
+            <%= link_to like_tweet_path(tweet), method: :put do %>
               <%= current_user.voted_as_when_voted_for(tweet) == true ? fa_icon("heart") : fa_icon("heart-o") %>
             <% end %>
           <% else %>

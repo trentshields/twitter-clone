@@ -1,9 +1,18 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :all_tweets, only: [:index, :index_twitter]
+
+  def all_tweets
+    @tweets = Tweet.all
+  end
 
   # GET /tweets
   # GET /tweets.json
   def index
+    @tweets = Tweet.all
+  end
+
+  def index_twitter
     @tweets = Tweet.all
   end
 
